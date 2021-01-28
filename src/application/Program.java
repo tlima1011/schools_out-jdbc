@@ -1,6 +1,8 @@
 package application;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.dao.CursoDao;
@@ -17,9 +19,12 @@ public class Program {
 		System.out.println("=== Table Curso === Teste1 FindById ===");
 		Curso curso = cursoDao.findById(3);
 		System.out.println(curso);
-		
-				
-		
+		System.out.println("\n=== Table Curso === Teste2 FindAll ===");
+		List<Curso> list = new ArrayList<Curso>();
+		list = cursoDao.findAll();
+		for (Curso obj : list) {
+			System.out.println(obj);
+		}
 		sc.close();
 	}
 }
