@@ -52,7 +52,7 @@ public class AlunoAssisteCurso implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AlunoAssisteCurso [id = " + id + ", id_aluno = " + aluno.getId() + " - Nome: " + aluno.getNome() + ", id_curso: " + curso.getId() + " Nome Curso: " +curso.getNome()+ " ]";
+		return "AlunoAssisteCursoDao [id = " + id + ", id_aluno = " + aluno.getId() + " - Nome: " + aluno.getNome() + ", id_curso: " + curso.getId() + " Nome Curso: " +curso.getNome()+ " ]";
 	}
 
 	@Override
