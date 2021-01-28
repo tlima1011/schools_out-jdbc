@@ -1,7 +1,9 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Aluno implements Serializable{
 	
@@ -11,6 +13,7 @@ public class Aluno implements Serializable{
 	private String nome; 
 	private String email; 
 	private Date dataNascimento; 
+	private List<AlunoAssisteCurso> alunoAssisteCurso = new ArrayList<>(); 
 	
 	//Constructor
 	public Aluno() {
