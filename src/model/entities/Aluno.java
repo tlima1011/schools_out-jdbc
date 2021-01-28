@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class Aluno implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -13,6 +14,7 @@ public class Aluno implements Serializable{
 	private String nome; 
 	private String email; 
 	private Date dataNascimento; 
+	
 	private List<AlunoAssisteCurso> alunoAssisteCurso = new ArrayList<>(); 
 	
 	//Constructor
@@ -57,6 +59,14 @@ public class Aluno implements Serializable{
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public void addCurso(AlunoAssisteCurso ac) {
+		alunoAssisteCurso.add(ac); 
+	}
+	
+	public void removeCurso(AlunoAssisteCurso ac) {
+		alunoAssisteCurso.remove(ac); 
 	}
 
 	@Override

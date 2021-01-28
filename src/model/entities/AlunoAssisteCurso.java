@@ -7,18 +7,22 @@ public class AlunoAssisteCurso implements Serializable{
 	//Atributos 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
+	
 	private Integer id_aluno; 
 	private Integer id_curso;
+	private Aluno aluno;
+	private Curso curso; 
 	
 	//Construtores 
 	public AlunoAssisteCurso() {
 		
 	}
 
-	public AlunoAssisteCurso(Integer id, Integer id_aluno, Integer id_curso) {
+	public AlunoAssisteCurso(Integer id, Aluno aluno, Curso curso) {
 		this.id = id;
-		this.id_aluno = id_aluno;
-		this.id_curso = id_curso;
+		this.aluno = aluno;
+		this.curso = curso;
+		
 	}
 	//Getters and Setters 
 
@@ -48,7 +52,7 @@ public class AlunoAssisteCurso implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AlunoAssisteCurso [id=" + id + ", id_aluno=" + id_aluno + ", id_curso=" + id_curso + "]";
+		return "AlunoAssisteCurso [id = " + id + ", id_aluno = " + aluno.getId() + " - Nome: " + aluno.getNome() + ", id_curso: " + curso.getId() + " Nome Curso: " +curso.getNome()+ " ]";
 	}
 
 	@Override
@@ -88,6 +92,4 @@ public class AlunoAssisteCurso implements Serializable{
 		return true;
 	}
 	
-	
-
 }

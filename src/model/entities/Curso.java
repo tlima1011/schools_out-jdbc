@@ -1,6 +1,8 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Curso implements Serializable{
 	
@@ -18,7 +20,7 @@ public class Curso implements Serializable{
 	public Curso(Integer id, String nome, Integer duracao) {
 		this.id = id;
 		this.nome = nome;
-		this.duracao = duracao;
+		this.duracao = duracao; 
 	}
 	//Getters and Setters 
 
@@ -45,7 +47,7 @@ public class Curso implements Serializable{
 	public void setDuracao(Integer duracao) {
 		this.duracao = duracao;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Curso [id=" + id + ", nome=" + nome + ", duracao=" + duracao + "]";
@@ -75,4 +77,6 @@ public class Curso implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 }
