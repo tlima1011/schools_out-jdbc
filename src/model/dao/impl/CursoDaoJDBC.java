@@ -1,10 +1,14 @@
 package model.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import db.DB;
+import db.DbException;
 import model.dao.CursoDao;
-import model.entities.Aluno;
 import model.entities.Curso;
 
 public class CursoDaoJDBC implements CursoDao{
@@ -34,11 +38,35 @@ public class CursoDaoJDBC implements CursoDao{
 		// TODO Auto-generated method stub
 		
 	}
-
+ 
 	@Override
-	public Aluno findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Curso findById(Integer id) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement("SELECT * FROM CURSO WHERE curso.id = ?");
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				Curso course = instantiateCurso(rs);
+				return course;
+			}
+			return null;
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}		
+		
+	}
+
+	private Curso instantiateCurso(ResultSet rs) throws SQLException {
+		Curso curso = new Curso();
+		curso.setId(rs.getInt("id"));
+		curso.setNome(rs.getString("nome"));
+		curso.setDuracao(rs.getInt("duracao"));
+		return curso;
 	}
 
 	@Override
