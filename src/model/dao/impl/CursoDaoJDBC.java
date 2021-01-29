@@ -48,7 +48,21 @@ public class CursoDaoJDBC implements CursoDao{
 
 	@Override
 	public void update(Curso obj) {
-		
+		PreparedStatement st = null;  
+		try {
+			st = conn.prepareStatement("update curso set nome = ?, duracao = ? where id = ?");
+			//update curso set nome = 'Linguagem R', duracao = 80 where id = 14
+			st.setString(1, obj.getNome());
+			st.setInt(2, obj.getDuracao());
+			st.setInt(3, obj.getId());
+			st.executeUpdate(); 
+		}
+		catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 

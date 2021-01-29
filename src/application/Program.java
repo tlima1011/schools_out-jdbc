@@ -29,7 +29,12 @@ public class Program {
 		Curso newCurso = new Curso(null, "HTML/CSS",60);
 		cursoDao.insert(newCurso);
 		System.out.println("Inserted!! New id = " + newCurso.getId());
-		
+		System.out.println("\n=== Table Curso === Teste3 update implementation ===");
+		curso = cursoDao.findById(12);
+		curso.setNome("C# Intermediario");
+		curso.setDuracao(80);
+		cursoDao.update(curso);
+		System.out.println("Update completed");
 		
 		
 		
