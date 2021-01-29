@@ -25,6 +25,14 @@ public class Program {
 		for (Curso obj : list) {
 			System.out.println(obj);
 		}
+		System.out.println("\n=== Table Curso === Teste2 Insert curso ===");
+		Curso newCurso = new Curso(null, "HTML/CSS",60);
+		cursoDao.insert(newCurso);
+		System.out.println("Inserted!! New id = " + newCurso.getId());
+		
+		
+		
+		
 		sc.close();
 	}
 }

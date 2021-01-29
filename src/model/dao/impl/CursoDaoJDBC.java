@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,19 +25,36 @@ public class CursoDaoJDBC implements CursoDao{
 
 	@Override
 	public void insert(Curso obj) {
-		// TODO Auto-generated method stub
-		
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement("INSERT INTO curso (nome, duracao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+			st.setString(1, obj.getNome());
+			st.setInt(2, obj.getDuracao());
+			int rowsAffected = st.executeUpdate();
+			if (rowsAffected > 0) {
+				ResultSet rs = st.getGeneratedKeys();
+				if (rs.next()) {
+					int id = rs.getInt(1);
+					obj.setId(id);
+				}
+				DB.closeResultSet(rs);
+			} else {
+				throw new DbException("Unexpected error: no rows affected");
+			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
 	}
 
 	@Override
 	public void update(Curso obj) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
  
