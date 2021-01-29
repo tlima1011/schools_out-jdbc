@@ -17,7 +17,7 @@ public class Program {
 		CursoDao cursoDao = DaoFactory.createCursoDao();
 				
 		System.out.println("=== Table Curso === Teste1 FindById ===");
-		Curso curso = cursoDao.findById(3);
+		Curso curso = cursoDao.findById(6);
 		System.out.println(curso);
 		System.out.println("\n=== Table Curso === Teste2 FindAll ===");
 		List<Curso> list = new ArrayList<Curso>();
@@ -29,6 +29,7 @@ public class Program {
 		Curso newCurso = new Curso(null, "HTML/CSS",60);
 		cursoDao.insert(newCurso);
 		System.out.println("Inserted!! New id = " + newCurso.getId());
+		
 		System.out.println("\n=== Table Curso === Teste3 update implementation ===");
 		curso = cursoDao.findById(12);
 		curso.setNome("C# Intermediario");
@@ -36,6 +37,11 @@ public class Program {
 		cursoDao.update(curso);
 		System.out.println("Update completed");
 		
+		System.out.println("\n=== Table Curso === Teste4 Delete implementation ===");
+		System.out.print("Enter id for delete test: ");
+		int id = sc.nextInt();
+		cursoDao.deleteById(id);
+		System.out.println("Delete completed");
 		
 		
 		sc.close();
